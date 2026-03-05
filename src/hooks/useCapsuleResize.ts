@@ -57,10 +57,11 @@ export function useCapsuleResize() {
               const y = Math.round(sh - windowHeight - 80)
               await win.setPosition(new LogicalPosition(x, y)).catch(() => {})
             }
+            await win.show().catch(() => {})
           } catch {
             /* ignore – monitor info unavailable */
+            await win.show().catch(() => {})
           }
-          await win.show().catch(() => {})
           initialized.current = true
           prevWindowSize.current = { width: windowWidth, height: windowHeight }
           return
